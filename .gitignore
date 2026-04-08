@@ -1,0 +1,6 @@
+.runlogs/
+.tmp_remote_inspect/
+.tmp_push_repo/
+.vscode/
+notes.txt
+plan.md

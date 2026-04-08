@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #faf2e8;
+  --color-primary-100: #f6e5d3;
+  --color-primary-200: #eccbb6;
+  --color-primary-300: #dfae84;
+  --color-primary-400: #d28c58;
+  --color-primary-500: #c06f30;
+  --color-primary-600: #aa5e26;
+  --color-primary-700: #8c4a1f;
+  --color-primary-800: #65361a;
+  --color-primary-900: #432513;
+  --color-primary-950: #2b1d1c;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Dark mode toggle support */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --public-bg: #f4eee2;
+  --public-bg-soft: #fbf7ef;
+  --public-surface: rgba(255, 250, 244, 0.78);
+  --public-surface-strong: rgba(255, 248, 240, 0.94);
+  --public-border: rgba(120, 85, 57, 0.18);
+  --public-text: #2b1d1c;
+  --public-muted: #6f5b50;
+  --public-accent: #861c1c;
+  --public-accent-strong: #c06f30;
+  --public-accent-soft: rgba(236, 203, 182, 0.5);
+  --public-gold-soft: rgba(244, 179, 79, 0.18);
+  --public-shadow: 0 24px 70px rgba(43, 29, 28, 0.08);
+}
+
+.dark {
+  --public-bg: #181311;
+  --public-bg-soft: #201915;
+  --public-surface: rgba(31, 24, 21, 0.78);
+  --public-surface-strong: rgba(35, 27, 23, 0.92);
+  --public-border: rgba(236, 203, 182, 0.12);
+  --public-text: #f7eee5;
+  --public-muted: #cbb7a7;
+  --public-accent: #f4b34f;
+  --public-accent-strong: #eccbb6;
+  --public-accent-soft: rgba(134, 28, 28, 0.24);
+  --public-gold-soft: rgba(244, 179, 79, 0.16);
+  --public-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+}
+
+/* Base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--public-bg);
+  color: var(--public-text);
+  min-width: 375px;
+}
+
+.dark body {
+  background-color: var(--public-bg);
+  color: var(--public-text);
+}
+
+::selection {
+  background-color: rgba(192, 111, 48, 0.22);
+  color: var(--public-text);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(192, 111, 48, 0.45);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(236, 203, 182, 0.35);
+}
+
+/* Glassmorphism utility */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: var(--public-surface);
+  border: 1px solid var(--public-border);
+}
+
+.dark .glass {
+  background-color: var(--public-surface);
+  border: 1px solid var(--public-border);
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.public-app-shell {
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(244, 179, 79, 0.16), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(192, 111, 48, 0.14), transparent 26%),
+    linear-gradient(180deg, var(--public-bg-soft) 0%, var(--public-bg) 58%, var(--public-bg-soft) 100%);
+  color: var(--public-text);
+}
+
+.public-grid {
+  background-image:
+    linear-gradient(to right, rgba(120, 85, 57, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 85, 57, 0.08) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 85%);
+}
+
+.public-surface {
+  background: var(--public-surface);
+  border: 1px solid var(--public-border);
+  box-shadow: var(--public-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.public-surface-strong {
+  background: var(--public-surface-strong);
+  border: 1px solid var(--public-border);
+  box-shadow: var(--public-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.public-pill {
+  background: var(--public-accent-soft);
+  color: var(--public-accent);
+  border: 1px solid rgba(134, 28, 28, 0.08);
+}
+
+.public-muted {
+  color: var(--public-muted);
+}
+
+.public-gradient {
+  background: linear-gradient(135deg, #861c1c 0%, #c06f30 58%, #f4b34f 100%);
+}
+
+.public-gradient-soft {
+  background: linear-gradient(135deg, rgba(134, 28, 28, 0.12), rgba(244, 179, 79, 0.18));
+}
+
+.public-section-line {
+  border-top: 1px solid var(--public-border);
+  border-bottom: 1px solid var(--public-border);
+  background: linear-gradient(180deg, rgba(255, 249, 241, 0.45), rgba(255, 248, 240, 0.72));
+}
+
+.dark .public-section-line {
+  background: linear-gradient(180deg, rgba(32, 25, 21, 0.64), rgba(24, 19, 17, 0.86));
+}
+
+.dashboard-app-shell {
+  position: relative;
+  background:
+    radial-gradient(circle at top right, rgba(244, 179, 79, 0.1), transparent 24%),
+    radial-gradient(circle at top left, rgba(192, 111, 48, 0.12), transparent 26%),
+    linear-gradient(180deg, #f7f1e7 0%, #f4eee2 52%, #efe6d9 100%);
+}
+
+.dark .dashboard-app-shell {
+  background:
+    radial-gradient(circle at top right, rgba(244, 179, 79, 0.08), transparent 22%),
+    radial-gradient(circle at top left, rgba(134, 28, 28, 0.16), transparent 26%),
+    linear-gradient(180deg, #171210 0%, #1a1412 48%, #120e0d 100%);
+}
+
+.dashboard-surface {
+  background: rgba(255, 250, 244, 0.78);
+  border: 1px solid rgba(120, 85, 57, 0.16);
+  box-shadow: 0 18px 40px rgba(43, 29, 28, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .dashboard-surface {
+  background: rgba(30, 23, 20, 0.84);
+  border: 1px solid rgba(236, 203, 182, 0.1);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
+}
+
+.dashboard-surface-soft {
+  background: rgba(255, 248, 240, 0.92);
+  border: 1px solid rgba(120, 85, 57, 0.14);
+  box-shadow: 0 14px 30px rgba(43, 29, 28, 0.06);
+}
+
+.dark .dashboard-surface-soft {
+  background: rgba(36, 28, 24, 0.92);
+  border: 1px solid rgba(236, 203, 182, 0.08);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.dashboard-panel-title {
+  color: #2b1d1c;
+}
+
+.dark .dashboard-panel-title {
+  color: #f7eee5;
+}
+
+.dashboard-panel-text {
+  color: #6f5b50;
+}
+
+.dark .dashboard-panel-text {
+  color: #cbb7a7;
+}
+
+.dashboard-icon-chip {
+  background: linear-gradient(135deg, rgba(134, 28, 28, 0.12), rgba(244, 179, 79, 0.22));
+}
+
+.dark .dashboard-icon-chip {
+  background: linear-gradient(135deg, rgba(134, 28, 28, 0.22), rgba(244, 179, 79, 0.12));
+}
+
+.dashboard-outline-button {
+  border: 1px solid rgba(120, 85, 57, 0.18);
+  background: rgba(255, 250, 244, 0.72);
+  color: #432513;
+}
+
+.dashboard-outline-button:hover {
+  background: rgba(255, 246, 237, 0.96);
+}
+
+.dark .dashboard-outline-button {
+  border-color: rgba(236, 203, 182, 0.14);
+  background: rgba(255, 255, 255, 0.02);
+  color: #f7eee5;
+}
+
+.dark .dashboard-outline-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hide scrollbar (used by RenewalTimeline) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── FullCalendar Indigo Theme ───────────────────────────────────────────── */
+.renewal-calendar .fc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+}
+
+.renewal-calendar .fc-toolbar-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #432513;
+}
+
+.renewal-calendar .fc-button {
+  background-color: #861c1c !important;
+  border-color: #742020 !important;
+  border-radius: 8px !important;
+  font-size: 0.75rem !important;
+  padding: 4px 10px !important;
+  box-shadow: none !important;
+}
+
+.renewal-calendar .fc-button:hover {
+  background-color: #742020 !important;
+}
+
+.renewal-calendar .fc-day-today {
+  background-color: #faf2e8 !important;
+}
+
+.renewal-calendar .fc-event {
+  border-radius: 4px;
+  font-size: 0.68rem;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.dark .renewal-calendar .fc-toolbar-title {
+  color: #f7eee5;
+}
+
+.dark .renewal-calendar .fc-day-today {
+  background-color: #2b1d1c !important;
+}
+
+.dark .renewal-calendar .fc-col-header-cell-cushion,
+.dark .renewal-calendar .fc-daygrid-day-number {
+  color: #9ca3af;
+}
+
+.dark .renewal-calendar .fc-theme-standard td,
+.dark .renewal-calendar .fc-theme-standard th {
+  border-color: #374151;
+}
