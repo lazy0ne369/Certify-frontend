@@ -38,6 +38,11 @@ public class UserService {
         return userMapper.toResponse(userRepository.save(user));
     }
 
+    public void deleteCurrentUser() {
+        AppUser user = currentUserService.getCurrentUser();
+        userRepository.delete(user);
+    }
+
     @Transactional(readOnly = true)
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll().stream()
