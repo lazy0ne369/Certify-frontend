@@ -1,6 +1,9 @@
 .runlogs/
 .tmp_remote_inspect/
 .tmp_push_repo/
+.tmp_frontend_repo/
 .vscode/
 notes.txt
 plan.md
+.env
+**/.env

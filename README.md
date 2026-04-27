@@ -129,6 +129,27 @@ http://127.0.0.1:5173
 - Backend seed data inserts demo users and sample certificates
 - Frontend uses Axios instead of `fetch`
 
+## Email Setup
+
+The backend can send:
+
+- Welcome emails after registration
+- Confirmation emails after adding a certificate
+- Scheduled expiry reminder emails
+
+To configure Gmail SMTP:
+
+1. Create a Gmail App Password for the sender account
+2. Copy [.env.template](e:\FSAD_CERTIFY\.env.template) to `certify-backend/.env`
+3. Set `SPRING_MAIL_USERNAME`, `SPRING_MAIL_PASSWORD`, and `APP_MAIL_FROM`
+4. Restart the backend
+
+Notes:
+
+- `APP_MAIL_EXPIRY_ALERT_DAYS` defaults to `1`
+- Scheduled expiry reminders run daily at `09:00` because `app.mail.expiry-alert-cron=0 0 9 * * *`
+- The backend now logs a startup warning if mail is still using placeholder values
+
 ## Verification
 
 Verified during implementation:
